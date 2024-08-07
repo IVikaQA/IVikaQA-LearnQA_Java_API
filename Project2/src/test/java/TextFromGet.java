@@ -26,6 +26,6 @@ public class TextFromGet {
 
         // Получить ответ и вывести текст из ответа на консоль
         String textResponse = response.getBody().asString();
-        System.out.println("Response Text: " + textResponse); 
+        System.out.println("Response Text: " + textResponse);
     }
 }
