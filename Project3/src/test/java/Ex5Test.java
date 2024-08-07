@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 public class Ex5Test {
     @Test
-    public void testRestAssured() {
+    public void testParseJson() {
         // 1)Получить ответ от API
         Response response = RestAssured
                 .given()

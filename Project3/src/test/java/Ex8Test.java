@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 public class Ex8Test {
 
     @Test
-    public void testRestAssured() {
+    public void testTokens() {
 
         //Токен
         String token = "";

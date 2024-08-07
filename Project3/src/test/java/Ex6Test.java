@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 public class Ex6Test {
 
     @Test
-    public void testRestAssured() {
+    public void testRedirect() {
         // 1)Получить ответ от API
         Response response = RestAssured
                 .given()

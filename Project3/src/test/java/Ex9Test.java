@@ -10,7 +10,7 @@ import java.io.IOException;
 public class Ex9Test {
 
     @Test
-    public void testAuthWithPasswords() {
+    public void testPodborPassword() {
         String login = "super_admin";
         String path = "src/test/resources/pass.txt";
         File file = new File(path);

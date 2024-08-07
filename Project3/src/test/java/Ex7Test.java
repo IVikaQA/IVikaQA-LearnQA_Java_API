@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 public class Ex7Test {
 
     @Test
-    public void testRestAssured() {
+    public void testLongRedirect() {
         String url = "https://playground.learnqa.ru/api/long_redirect";
         Response response;
         int statusCode;
