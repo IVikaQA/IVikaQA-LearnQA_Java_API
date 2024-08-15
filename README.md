@@ -22,12 +22,6 @@ Project3: Содержит следующие тесты:
 
 Project4: Содержит следующие тесты:
 -----------------------------------
-
-- Ex14Test использует класс BaseCaseTest для формирования фреймверка следующим образом:
-		На основании ответа на запрос,получает значения элементов ответа: header,cookie
-	Так же используется класс Assertions для проведения проверок
-- Ex13Test использует класс FileReader для чтения ожидаемых JSON-значений  в ответ на запрос: https://playground.learnqa.ru/ajax/api/user_agent_check
-	сам класс Ex13Test загружает из файла user_agents.txt один из вариантов ответа с полями: browser,platform,device на запрос: https://playground.learnqa.ru/ajax/api/user_agent_check
 	
 - Ex10Test
 	Тест в классе проверяет длину переменной типа String с помощью метода assertTrue/assertFalse. 
