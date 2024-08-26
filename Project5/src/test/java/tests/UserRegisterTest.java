@@ -67,7 +67,9 @@ public class UserRegisterTest extends BaseTestCase {
         //Проверяем наличие поля в JSON ответа
         Assertions.assertJsonHasField(responseCreateAuth,"id");
     }
+
     /*
+    Ex15
     Создание пользователя с некорректным email - без символа @
      */
     @Test
@@ -85,6 +87,7 @@ public class UserRegisterTest extends BaseTestCase {
     }
 
     /*
+    Ex15
     Создание пользователя без указания одного из полей
      */
     @ParameterizedTest
@@ -99,9 +102,13 @@ public class UserRegisterTest extends BaseTestCase {
         Response responseCreateAuth = apiCoreRequests.makePostRequest("https://playground.learnqa.ru/api/user/", userData);
 
         Assertions.assertResponseCodeEquals(responseCreateAuth, 400);
-        Assertions.assertResponseTextEquals(responseCreateAuth, "The following fields are required: " + field);
+        Assertions.assertResponseTextEquals(responseCreateAuth, "The following required params are missed: " + field); // Обновите текст ошибки
     }
 
+    /*
+    Ex15
+    Создание пользователя с очень коротким именем в один символ
+     */
     @Test
     public void testCreateUserWithShortName() {
         String shortName = "A"; // имя в один символ
@@ -113,9 +120,13 @@ public class UserRegisterTest extends BaseTestCase {
         Response responseCreateAuth = apiCoreRequests.makePostRequest("https://playground.learnqa.ru/api/user/", userData);
 
         Assertions.assertResponseCodeEquals(responseCreateAuth, 400);
-        Assertions.assertResponseTextEquals(responseCreateAuth, "Username is too short"); // Проверьте текст ошибки
+        Assertions.assertResponseTextEquals(responseCreateAuth, "The value of 'username' field is too short"); // Обновите текст ошибки
     }
 
+    /*
+    Ex15
+    Создание пользователя с очень длинным именем - длиннее 250 символов
+     */
     @Test
     public void testCreateUserWithLongName() {
         String longName = "A".repeat(251); // имя длиной 251 символ
@@ -127,6 +138,6 @@ public class UserRegisterTest extends BaseTestCase {
         Response responseCreateAuth = apiCoreRequests.makePostRequest("https://playground.learnqa.ru/api/user/", userData);
 
         Assertions.assertResponseCodeEquals(responseCreateAuth, 400);
-        Assertions.assertResponseTextEquals(responseCreateAuth, "Username is too long"); // Проверьте текст ошибки
+        Assertions.assertResponseTextEquals(responseCreateAuth, "The value of 'username' field is too long"); // Обновите текст ошибки
     }
 }

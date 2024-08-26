@@ -80,4 +80,50 @@ public class ApiCoreRequests {
                 .get(url)
                 .andReturn();
     }
+
+    @Step("Получение данных другого пользователя с ID {userId} как авторизованный пользователь")
+    public Response getUserDataAsAuthorized(String userId, String header, String cookie) {
+        return given()
+                .header("x-csrf-token", header)
+                .cookie("auth_sid", cookie)
+                .get("https://playground.learnqa.ru/api/user/" + userId)
+                .andReturn();
+    }
+
+    @Step("Register a new user")
+    public Response registerUser(Map<String, String> userData) {
+        return makePostRequest("https://playground.learnqa.ru/api/user/", userData);
+    }
+    @Step("Login user")
+    public Response loginUser(Map<String, String> loginData) {
+        return makePostRequestForLogin("https://playground.learnqa.ru/api/user/login", loginData);
+    }
+
+    @Step("Edit user data")
+    public Response editUser(String userId, Map<String, String> data, String token, String cookie) {
+        return given()
+                .header("x-csrf-token", token)
+                .cookie("auth_sid", cookie)
+                .body(data)
+                .put("https://playground.learnqa.ru/api/user/" + userId)
+                .andReturn();
+    }
+
+    @Step("Get user data")
+    public Response getUser(String userId, String token, String cookie) {
+        return given()
+                .header("x-csrf-token", token)
+                .cookie("auth_sid", cookie)
+                .get("https://playground.learnqa.ru/api/user/" + userId)
+                .andReturn();
+    }
+
+    @Step("Delete user by ID")
+    public Response deleteUser(String userId, String token, String cookie) {
+        return given()
+                .header("x-csrf-token", token)
+                .cookie("auth_sid", cookie)
+                .delete("https://playground.learnqa.ru/api/user/" + userId)
+                .andReturn();
+    }
 }
