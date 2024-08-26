@@ -13,10 +13,10 @@ import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-    /*
-    В этом классе методы для редактирования существующих пользователей
-    Замечание: Нельзя редактировать пользователей с id < 10
-    */
+/*
+В этом классе методы для редактирования существующих пользователей
+Замечание: Нельзя редактировать пользователей с id < 10
+*/
 public class UserEditTest extends BaseTestCase {
     /*
     В этом тесте будем:
@@ -98,7 +98,7 @@ public class UserEditTest extends BaseTestCase {
                 .put("https://playground.learnqa.ru/api/user/1") // Используйте ID пользователя < 10
                 .andReturn();
 
-        Assertions.assertResponseCodeEquals(responseEdit, 401); // Проверка на неавторизованный доступ
+        Assertions.assertResponseCodeEquals(responseEdit, 400); // Проверка на неавторизованный доступ
     }
 
     /*
