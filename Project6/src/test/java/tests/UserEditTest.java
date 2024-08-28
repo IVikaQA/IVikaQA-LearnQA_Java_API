@@ -118,8 +118,6 @@ public class UserEditTest extends BaseTestCase {
                 .post("https://playground.learnqa.ru/api_dev/user/")
                 .andReturn();
 
-        System.out.println(responseCreateUser1.asString());
-
         // Регистрация второго пользователя
         Response responseCreateUser2 = RestAssured
                 .given()

@@ -1,8 +1,10 @@
 package lib;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class DataGenerator {
     // Метод, который возвращает случайный email в формате строки.
@@ -13,10 +15,23 @@ public class DataGenerator {
         return "learnqa" + timestamp + "@example.com";
     }
 
+    public static String getRandomEmailWithRandomCount() {
+        // Создание строки с текущей датой и временем в формате "yyyyMMddHHmmss".
+        String timestamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+
+        // Генерация случайного числа (например, от 1000 до 9999) и преобразование его в строку.
+        Random random = new Random();
+        int randomNumber = random.nextInt(9000) + 1000; // Генерирует число от 1000 до 9999
+        String randomNumberString = Integer.toString(randomNumber);
+
+        // Возвращает строку email, состоящую из "learnqa", текущего времени, случайного числа и домена "@example.com".
+        return "learnqa" + timestamp + randomNumberString + "@example.com";
+    }
+
     //Метод возвращает дефолтные данные для того,чтобы дальше создать нового пользователя
     public static Map<String,String > getRegistrationData() {
         Map<String, String> data = new HashMap<>();
-        data.put("email", DataGenerator.getRandomEmail());
+        data.put("email", DataGenerator.getRandomEmailWithRandomCount());
         data.put("password", "123");
         data.put("username", "learnqa");
         data.put("firstName", "learnqa");
@@ -24,6 +39,7 @@ public class DataGenerator {
 
         return data;
     }
+
 
     /*
     Метод возвращает конкретные данные.
