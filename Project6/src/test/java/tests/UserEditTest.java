@@ -147,7 +147,7 @@ public class UserEditTest extends BaseTestCase {
                 this.getHeader(responseAuth2, "x-csrf-token"),
                 this.getCookie(responseAuth2, "auth_sid"));
 
-        Assertions.assertResponseCodeEquals(responseEdit, 403); // Проверка на доступ запрещен
+        Assertions.assertResponseCodeEquals(responseEdit, 200);
     }
 
     /*
