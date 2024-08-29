@@ -19,8 +19,9 @@ public class UserRegisterTest extends BaseTestCase {
     Проверяем: Можно ли создать пользователя, когда почта уже использована другим пользователем
     НЕГАТИВНЫЙ ТЕСТ
      */
+
     @Test
-    public void testCreateUserWithExistingEmail(){
+    public void testCreateUserWithExistingEmail() {
         String email = "vinkotov@example.com";
 
         //Заполняем данными
