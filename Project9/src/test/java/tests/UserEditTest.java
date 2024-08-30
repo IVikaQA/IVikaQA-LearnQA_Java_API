@@ -1,6 +1,7 @@
 package tests;
 
-
+import io.qameta.allure.Feature;
+import io.qameta.allure.TmsLink;
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
@@ -20,6 +21,7 @@ import java.util.Map;
 В этом классе методы для редактирования существующих пользователей
 Замечание: Нельзя редактировать пользователей с id < 10
 */
+@Feature("Редактирование пользователя")
 public class UserEditTest extends BaseTestCase {
     private static int tests = 0;
     private static int countPassed = 0;
@@ -45,6 +47,7 @@ public class UserEditTest extends BaseTestCase {
     3)Проверять, что успешно отредактировали
     4)Авторизоваться под созданным пользователем, чтобы получить его данные
      */
+
     @Test
     @DisplayName("Тест: Редактирование только что созданного пользователя")
     public void testEditJustCreated() {
@@ -110,12 +113,9 @@ public class UserEditTest extends BaseTestCase {
         }
     }
 
-    /*
-    Ex17
-    Попытаемся изменить данные пользователя, будучи неавторизованными
-     */
     @Test
     @DisplayName("Тест: Редактирование пользователя без авторизации")
+    @TmsLink("Ex17")
     public void testEditUserWithoutAuthorization() {
         System.out.println("Тест: Редактирование пользователя без авторизации");
 
@@ -150,7 +150,8 @@ public class UserEditTest extends BaseTestCase {
     Попытаемся изменить данные пользователя, будучи авторизованными другим пользователем
      */
     @Test
-    @DisplayName("Тест: Редактирование пользователя другим пользователем")
+    @DisplayName("Тест: Редактирования первого пользователя под авторизацией второго")
+    @TmsLink("Ex17")
     public void testEditUserAsDifferentUser() {
         System.out.println("Тест: Редактирование пользователя другим пользователем");
 
@@ -209,13 +210,9 @@ public class UserEditTest extends BaseTestCase {
         }
     }
 
-    /*
-    Ex17
-    Попытаемся изменить email пользователя, будучи авторизованными тем же пользователем,
-    на новый email без символа @
-     */
     @Test
     @DisplayName("Тест: Изменение email на некорректный (без символа @)")
+    @TmsLink("Ex17")
     public void testEditEmailWithoutAtSymbol() {
         System.out.println("Тест: Изменение email на некорректный (без символа @)");
 
@@ -263,14 +260,10 @@ public class UserEditTest extends BaseTestCase {
             countFailed++;
         }
     }
-
-    /*
-    Ex17
-    Попытаемся изменить firstName пользователя, будучи авторизованными тем же пользователем,
-    на очень короткое значение в один символ
-     */
+    
     @Test
     @DisplayName("Тест: Изменение firstName на слишком короткое значение")
+    @TmsLink("Ex17")
     public void testEditFirstNameToShortValue() {
         System.out.println("Тест: Изменение firstName на слишком короткое значение");
 

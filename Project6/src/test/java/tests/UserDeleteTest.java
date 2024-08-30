@@ -11,6 +11,7 @@ import java.util.Map;
 
 public class UserDeleteTest {
 
+    @Feature("User Registration")
     @Test
     public void testUserDelete() {
         // Генерация данных для регистрации
